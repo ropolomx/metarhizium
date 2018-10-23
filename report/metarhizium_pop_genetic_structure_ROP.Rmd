@@ -1,0 +1,60 @@
+---
+title: "Population structure analysis of _Metarhizium_"
+author: "Rodrigo Ortega Polo"
+date: "October 21, 2018"
+output: word_document
+bibliography: Metarhizium.bib
+---
+
+## Introduction
+
+This analysis was performed to address the reviewers' comments on
+Inglis et al., 2018 ("Biogeography and subspecies diversity of 
+_Metarhizium brunneum_ and _Metarhizium robertsii_ in northwestern 
+North America") submitted to the Canadian Journal of Microbiology.
+
+
+## Methods
+
+### Preparing data for analysis
+
+The analysis was performed with the data provided by Jenny Gusse. After investigation,
+isolate #2027 was correctly assigned as _M. robertsii_.
+
+Some entries were dropped from the dataset because either they were completely absent from the _M. robertsii_
+dataset (Ma375_3, Ma307_2, and Ma2296_2) or that were present in only one isolate in the _M. brunnei_ dataset (Ma307_2 and Ma2296_2).
+
+### Population genetic structure
+
+In order to analyze the population genetic structure, the STRUCTURE v.2.3.4 program 
+[@pritchard_inference_2000] was run with the admixture model, 
+correlated allele frequencies and locations as priors (LOCPRIORS). This was done for 
+both the analysis of agricultural vs. natural habitat and glaciated vs. non-glaciated locations for both
+_M. robertsii_ and _M. brunnei_. 
+STRUCTURE is a Bayesian clustering method that finds the most likely number of clusters (K) 
+that maximize Hardy-Weinberg equilibrium and minimize linkage disequilibrium. 
+Five independent runs for each value of K from 1 to 5 were 
+run (10,000 burn-in periods with 20,000 Markov Chain Monte Carlo (MCMC) repetitions after 
+burn-in.). Results were averaged and the true K value was determine using STRUCTURE HARVESTER web version 
+v0.6.94 [@earl_structure_2012] by using the delta K (Evanno) and the mean log likelihood LnPr(X|K).
+
+Fixation index (Fst) values were calculated for analyzing genetic differentiation.
+
+## Results and Discussion
+
+### Glaciated vs. non-glaciated locations
+
+STRUCTURE analysis revealed that the true value of K was 3 clusters for _M.robertsii_ and for _M. brunneum_
+when comparing 
+
+
+In conclusion, the observations on population structure were 
+consistent with the results described with the minimum spanning trees 
+in the manuscript. Namely, there is no distinction between 
+agricultural and natural isolates with minimum spanning tree, but 
+there is clear distinction between isolates inside glaciation vs. 
+outside glaciation.
+
+## Acknowledgments
+
+ROP is supported by AAFC startup funding for the Bioinformatics Research Support Unit of the Lethbridge Research and Development Centre.
