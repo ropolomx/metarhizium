@@ -44,9 +44,8 @@ Fixation index (Fst) values were calculated for analyzing genetic differentiatio
 
 ### Glaciated vs. non-glaciated locations
 
-STRUCTURE analysis revealed that the true value of K was 3 clusters for _M.robertsii_ and for _M. brunneum_
-when comparing 
-
+STRUCTURE analysis revealed that the true value of K was 3 clusters for 
+_M.robertsii_ and K = 2 for _M. brunneum_.
 
 In conclusion, the observations on population structure were 
 consistent with the results described with the minimum spanning trees 

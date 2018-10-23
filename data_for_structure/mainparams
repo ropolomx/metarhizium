@@ -4,13 +4,13 @@
 
 Input/Output files
 
-#define INFILE   mrob_glaciation.txt   // 
-#define OUTFILE  mrob_glaciation_str.txt  // 
+#define INFILE   mbru_habitat.txt   // 
+#define OUTFILE  mbru_habitat_str.txt  // 
 
 Data file format
 
-#define NUMINDS    26 (int) number of diploid individuals in data file
-#define NUMLOCI    17    // (int) number of loci in data file
+#define NUMINDS    134 (int) number of diploid individuals in data file
+#define NUMLOCI    18    // (int) number of loci in data file
 #define PLOIDY      1    // (int) ploidy of data
 #define MISSING    -1    // (int) value given to missing genotype data
 #define ONEROWPERIND 1    // (B) store data for individuals in a single line
