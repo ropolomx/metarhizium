@@ -49,8 +49,8 @@ v0.6.94 [@earl_structure_2012] by using the delta K (Evanno) and the mean log li
 Optimal alignments for the multiple replicate cluster analyses were searched with 
 CLUMPP [@jakobsson_clumpp_2007] to ensure cluster labels match across runs, with LargeKGreedy method
 with the G' pairwise matrix similarity statistic, random input orders and 100 repeats. 
-Cluster data processed with CLUMPP was plotted with the ggplot2 package [@wickham_ggplot2_2016] 
-of the R statistical computing language [@r_core_2018].
+Cluster and ancestry coefficient data processed with CLUMPP was plotted with the ggplot2 package 
+version 3.0.0.9000 [@wickham_ggplot2_2016] of the R statistical computing language [@r_core_2018].
 
 The Python and R code that was used for data preparation and visualization is available 
 in: https://github.com/ropolomx/metarhizium. 
