@@ -64,7 +64,7 @@ _M.robertsii_ the true value of K was 3 clusters and for _M. brunneum_ K=2, when
 non-glaciated locations as prior locations. In the case of _M. robertsii_, the isolates inside areas 
 that were glaciated included an admixed individual (sample #347, Osoyoos, BC, 
 Montane Cordilla South Ecozone, Agricultural). A closer analyses of the metadata associated with those samples
-revealed that. In the case of _M. brunneum_, the 
+revealed that. In the case of _M. brunneum_.
 
 
 

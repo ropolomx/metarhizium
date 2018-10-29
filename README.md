@@ -7,9 +7,9 @@ brunneum_ and _Metarhizium robertsii_ in northwestern North America"
 
 ## Dependencies
 
-The [Jupyter Notebook](data_for_structure/Metarhizium data analysis.ipynb)
-shows the data preparation work done with `pandas` version 0.23.4 in a conda
-environment (Python 3.6.6).
+The [Jupyter Notebook](Metarhizium data analysis.ipynb) shows the data
+preparation work done with `pandas` version 0.23.4 in a conda environment
+(Python 3.6.6).
 
 R packages that were required:
 
