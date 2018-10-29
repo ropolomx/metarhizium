@@ -37,18 +37,20 @@ dataset (Ma307_2 and Ma2296_2).
 In order to analyze the population genetic structure, the STRUCTURE v.2.3.4 program 
 [@pritchard_inference_2000] was run with the admixture model, 
 correlated allele frequencies and locations as priors (LOCPRIORS). This was done for 
-the analyses of both _M. robertsii_ and _M. brunnei_, for both the comparisons of agricultural vs. natural habitats and glaciated vs. 
-non-glaciated locations. STRUCTURE is a Bayesian clustering method that finds the most likely number of population 
-clusters (K) based on allelic frequency that maximizes.com Hardy-Weinberg equilibrium and minimize linkage disequilibrium. 
+the analyses of both _M. robertsii_ and _M. brunnei_. The data of each species was used for the comparisons 
+of isolates from both agricultural vs. natural habitats and glaciated vs. non-glaciated locations. 
+STRUCTURE is a Bayesian clustering method that finds the most likely number of population 
+clusters (K) based on allelic frequency that maximizes Hardy-Weinberg equilibrium and minimizes linkage disequilibrium.
 Five independent runs for each value of K from 1 to 5 were 
 run (10,000 burn-in periods with 20,000 Markov Chain Monte Carlo (MCMC) repetitions after 
 burn-in.). Fixation index (Fst) values were calculated for analyzing genetic differentiation. 
 Results were averaged and the true K value was determined using STRUCTURE HARVESTER web version 
 v0.6.94 [@earl_structure_2012] by using the delta K (Evanno) and the mean log likelihood LnPr(X|K).
-Optimal alignments for the multiple replicate cluster analyses were searched with CLUMPP [@jakobsson_clumpp_2007] to ensure cluster labels match across runs,
-with LargeKGreedy method with the G' pairwise matrix similarity statistic, random input orders and 100 repeats. 
-Cluster data processed with CLUMPP was plotted with the ggplot2 package of R.
-
+Optimal alignments for the multiple replicate cluster analyses were searched with 
+CLUMPP [@jakobsson_clumpp_2007] to ensure cluster labels match across runs, with LargeKGreedy method
+with the G' pairwise matrix similarity statistic, random input orders and 100 repeats. 
+Cluster data processed with CLUMPP was plotted with the ggplot2 package [@wickham_ggplot2_2016] 
+of the R statistical computing language [@r_core_2018].
 
 The Python and R code that was used for data preparation and visualization is available 
 in: https://github.com/ropolomx/metarhizium. 
@@ -57,15 +59,19 @@ in: https://github.com/ropolomx/metarhizium.
 
 ### Glaciated vs. non-glaciated locations
 
-The STRUCTURE analysis revealed that for 
-_M.robertsii_ the true value of K was 3 clusters and for _M. brunneum_ K=2, when considering glaciated vs. non-glaciated locations
-as prior locations. In the case of _M. robertsii_, the genetic clusters included an admixed individual (sample #347, 
-Osoyoos, BC, Montane Cordilla South Ecozone, Agricultural)
+The STRUCTURE and subsequent STRUCTURE HARVESTER analyses revealed that for 
+_M.robertsii_ the true value of K was 3 clusters and for _M. brunneum_ K=2, when considering glaciated vs. 
+non-glaciated locations as prior locations. In the case of _M. robertsii_, the isolates inside areas 
+that were glaciated included an admixed individual (sample #347, Osoyoos, BC, 
+Montane Cordilla South Ecozone, Agricultural). A closer analyses of the metadata associated with those samples
+revealed that. In the case of _M. brunneum_, the 
+
+
 
 ### Agricultural vs. natural sites
 
-The true value of K was 3 for _M. robertsii_ and 2 for _M. brunneum_ when considering agricultural vs. 
-natural sites as prior locations.
+The true value of K was 3 for _M. robertsii_ and 2 for _M. brunneum_ when using agricultural vs. 
+natural sites as prior locations. 
 
 
 
@@ -80,3 +86,7 @@ outside glaciation.
 
 ROP is supported by AAFC startup funding for the Bioinformatics Research Support Unit 
 of the Lethbridge Research and Development Centre.
+
+## Bibliography
+
+

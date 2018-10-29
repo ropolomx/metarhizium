@@ -2,6 +2,7 @@
 # Load packages -----------------------------------------------------------
 
 library(tidyverse)
+library(gridExtra)
 
 # Mrob Habitat ------------------------------------------------------------
 
@@ -15,10 +16,6 @@ mrob_metadata <-
   mutate(Glaciation = str_replace(Glaciation, "O", "Outside"))
 
 mrob_habitat <- read_csv('data_for_structure/harvest_mrob_habitat/structure_plot_mrob_habitat.csv')
-
-# mrob_habitat <-
-#   mrob_habitat %>%
-#   rename(SampleID = Ind)
 
 mrob_habitat <- gather(mrob_habitat, key=Cluster, value = Q, 3:5)
 
@@ -50,7 +47,8 @@ mrob_habitat_viz <-
     axis.text.y = element_text(size=12)
   ) +
   xlab("\nSample ID #") + 
-  ylab("Ancestry Coefficient (Q)\n")
+  ylab("Ancestry Coefficient (Q)\n") +
+  ggtitle("B")
 
 mrob_habitat_viz
 
@@ -62,7 +60,6 @@ ggsave(
   units = "in",
   dpi = 600
 )
-
 
 # Mrob glaciation ---------------------------------------------------------
 
@@ -100,7 +97,8 @@ mrob_glaciation_viz <-
     axis.text.y = element_text(size=12)
   ) +
   xlab("\nSample ID #") + 
-  ylab("Ancestry Coefficient (Q)\n")
+  ylab("Ancestry Coefficient (Q)\n") +
+  ggtitle("B")
 
 mrob_glaciation_viz
 
@@ -113,7 +111,6 @@ ggsave(
   dpi = 600
 )
 
-
 # Mbru habitat ------------------------------------------------------------
 
 mbru_metadata <- read_csv('data_for_structure/mbru_meta.csv')
@@ -125,7 +122,7 @@ mbru_metadata <-
   mutate(Glaciation = str_replace(Glaciation, "I", "Inside")) %>%
   mutate(Glaciation = str_replace(Glaciation, "O", "Outside"))
 
-mbru_habitat <- read_csv('data_for_structure/structure_plot_mbru_habitat.csv')
+mbru_habitat <- read_csv('data_for_structure/harvest_mbru_habitat/structure_plot_mbru_habitat.csv')
 
 mbru_habitat <-
   mbru_habitat %>%
@@ -133,19 +130,17 @@ mbru_habitat <-
 
 mbru_habitat <- gather(mbru_habitat, key=Cluster, value = Q, 3:4)
 
-mbru_habitat$SampleID <- as.factor(mbru_habitat$SampleID)
-mbru_metadata$SampleID <- as.factor(mbru_metadata$SampleID)
-
 mbru_habitat <- inner_join(mbru_habitat, mbru_metadata, by="SampleID")
 
-# mbru_habitat$SampleID <- 
+mbru_habitat$SampleID <- as.factor(mbru_habitat$SampleID)
+mbru_habitat$`LRC ID #` <- as.factor(mbru_habitat$`LRC ID #`)
 
 mbru_habitat_viz <- 
   mbru_habitat %>%
   ggplot(aes(x=SampleID, y=Q, fill=Cluster)) +
   geom_bar(stat="Identity", width=1) +
   scale_fill_viridis_d(option="inferno", direction = -1, end=0.9) +
-  facet_grid(. ~ Ecozone, space = "free", scales = "free") +
+  facet_grid(. ~ Habitat, space = "free", scales = "free") +
   theme_classic() +
   theme(
     panel.spacing.x = unit(0.25, "lines"),
@@ -157,7 +152,8 @@ mbru_habitat_viz <-
     panel.grid = element_blank()
   ) +
   xlab("\nSample ID #") + 
-  ylab("Ancestry Coefficient (Q)\n")
+  ylab("Ancestry Coefficient (Q)\n") +
+  ggtitle("A")
 
 mbru_habitat_viz
 
@@ -166,6 +162,78 @@ ggsave(
   plot = mbru_habitat_viz,
   height = 6.5,
   width = 10.5,
+  units = "in",
+  dpi = 600
+)
+
+# Mbru glaciation ---------------------------------------------------------
+
+mbru_glaciation <- read_csv('data_for_structure/harvest_mbru_glaciation/structure_plot_mbru_glaciation.csv')
+
+mbru_glaciation <-
+  mbru_glaciation %>%
+  rename(SampleID = Ind)
+
+mbru_glaciation <- gather(mbru_glaciation, key=Cluster, value = Q, 3:4)
+
+mbru_glaciation <- inner_join(mbru_glaciation, mbru_metadata, by="SampleID")
+
+mbru_glaciation$SampleID <- as.factor(mbru_glaciation$SampleID)
+mbru_glaciation$`LRC ID #` <- as.factor(mbru_glaciation$`LRC ID #`)
+
+mbru_glaciation_viz <- 
+  mbru_glaciation %>%
+  ggplot(aes(x=SampleID, y=Q, fill=Cluster)) +
+  geom_bar(stat="Identity", width=1) +
+  scale_fill_viridis_d(option="inferno", direction = -1, end=0.9) +
+  facet_grid(. ~ Glaciation, space = "free", scales = "free") +
+  theme_classic() +
+  theme(
+    panel.spacing.x = unit(0.25, "lines"),
+    strip.text.x = element_text(size = 14),
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+    axis.text.x = element_text(size=7,angle=90),
+    axis.text.y = element_text(size=12),
+    panel.grid = element_blank()
+  ) +
+  xlab("\nSample ID #") + 
+  ylab("Ancestry Coefficient (Q)\n") +
+  ggtitle("A")
+
+mbru_glaciation_viz
+
+ggsave(
+  filename = 'mbru_glaciation_viz.png',
+  plot = mbru_glaciation_viz,
+  height = 6.5,
+  width = 10.5,
+  units = "in",
+  dpi = 600
+)
+
+# Combined figures --------------------------------------------------------
+
+# Habitat
+
+habitat_grob <- grid.arrange(mbru_habitat_viz, mrob_habitat_viz, ncol =1)
+
+ggsave(
+  filename = 'habitat_structure.png',
+  plot = habitat_arrange,
+  height = 8.5,
+  width = 11.5,
+  units = "in",
+  dpi = 600
+)
+
+glaciation_grob <- grid.arrange(mbru_glaciation_viz, mrob_glaciation_viz, ncol =1)
+
+ggsave(
+  filename = 'glaciation_structure.png',
+  plot = glaciation_grob,
+  height = 8.5,
+  width = 11.5,
   units = "in",
   dpi = 600
 )
