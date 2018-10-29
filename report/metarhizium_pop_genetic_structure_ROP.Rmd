@@ -60,20 +60,25 @@ in: https://github.com/ropolomx/metarhizium.
 ### Glaciated vs. non-glaciated locations
 
 The STRUCTURE and subsequent STRUCTURE HARVESTER analyses revealed that for 
-_M.robertsii_ the true value of K was 3 clusters and for _M. brunneum_ K=2, when considering glaciated vs. 
-non-glaciated locations as prior locations. In the case of _M. robertsii_, the isolates inside areas 
+_M. brunneum_ the true value of K was 2 clusters and for _M. brunneum_ K=3, when considering glaciated vs. 
+non-glaciated locations as prior locations (or inside and outside, respectively). 
+In the case of _M. robertsii_, the isolates inside areas 
 that were glaciated included an admixed individual (sample #347, Osoyoos, BC, 
-Montane Cordilla South Ecozone, Agricultural). A closer analyses of the metadata associated with those samples
-revealed that. In the case of _M. brunneum_.
+Montane Cordilla South Ecozone, Agricultural). 
 
 
+
+![](../glaciation_structure.png)
+
+Figure 1. Bayesian analysis of population structure of _Metarhizium bruuneum_(A) and _Metarhizium
+robertsii_ (B) with STRUCTURE. Barplots were generated for ancestry coefficients calculated with CLUMPP.
 
 ### Agricultural vs. natural sites
 
 The true value of K was 3 for _M. robertsii_ and 2 for _M. brunneum_ when using agricultural vs. 
 natural sites as prior locations. 
 
-
+![](../habitat_structure.png)
 
 In conclusion, the observations on population structure were 
 consistent with the results described with the minimum spanning trees 
