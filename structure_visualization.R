@@ -117,8 +117,8 @@ mbru_metadata <-
   mbru_metadata %>%
   mutate(Habitat = str_replace(Habitat, "Ag", "Agricultural")) %>%
   mutate(Habitat = str_replace(Habitat, "Nat", "Natural")) %>%
-  mutate(Glaciation = str_replace(Glaciation, "I", "Inside")) %>%
-  mutate(Glaciation = str_replace(Glaciation, "O", "Outside"))
+  mutate(Glaciation = str_replace(Glaciation, "I", "Glaciated")) %>%
+  mutate(Glaciation = str_replace(Glaciation, "O", "Not glaciated"))
 
 mbru_habitat <- read_csv('data_for_structure/harvest_mbru_habitat/structure_plot_mbru_habitat.csv')
 

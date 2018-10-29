@@ -1,7 +1,7 @@
 ---
-title: "Population structure analysis of _Metarhizium_"
+title: "Population structure analysis of _Metarhizium brunneum_ and _Metarhizium robertsii_"
 author: "Rodrigo Ortega Polo"
-date: "October 21, 2018"
+date: "October 28, 2018"
 output: word_document
 bibliography: Metarhizium.bib
 ---
@@ -30,7 +30,11 @@ were dropped from the dataset because either they were completely absent from th
 dataset (Ma375_3, Ma307_2, and Ma2296_2) or that were present only in one isolate in the _M. brunnei_ 
 dataset (Ma307_2 and Ma2296_2).
 
-### Linkage Disequilibrium and Hardy-Weinberg Equilibrium
+### Hardy-Weinberg Equilibrium tests Linkage Disequilibrium tests
+
+Deviations from Hardy-Weinberg equilibrium (HWE) and linkage disequilibrium (LD) were tested with 
+GENEPOP v4.2 using 100 batches, 1000 iterations per batch, and 1000 dememorisation steps for the Markov chain. 
+Significance was tested using a modified False Discovery Rate (FDR) correction method
 
 ### Population genetic structure
 
@@ -40,7 +44,7 @@ correlated allele frequencies and locations as priors (LOCPRIORS). This was done
 the analyses of both _M. robertsii_ and _M. brunnei_. The data of each species was used for the comparisons 
 of isolates from both agricultural vs. natural habitats and glaciated vs. non-glaciated locations. 
 STRUCTURE is a Bayesian clustering method that finds the most likely number of population 
-clusters (K) based on allelic frequency that maximizes Hardy-Weinberg equilibrium and minimizes linkage disequilibrium.
+clusters (K) based on allelic frequency that maximizes Hardy-Weinberg equilibrium (HWE) and minimizes linkage disequilibrium (LD).
 Five independent runs for each value of K from 1 to 5 were 
 run (10,000 burn-in periods with 20,000 Markov Chain Monte Carlo (MCMC) repetitions after 
 burn-in.). Fixation index (Fst) values were calculated for analyzing genetic differentiation. 
@@ -57,28 +61,39 @@ in: https://github.com/ropolomx/metarhizium.
 
 ## Results and Discussion
 
+### Hardy-Weinberg Equilibrium and linkage disequilibrium
+
+There Hardy-Weinberg exact test for _M. robertsii_ showed that all alleles 
+had significant deviation from HWE. Fisher's Exact Test results showed that 36 allele pairs
+were in disequilibrium (p < 0.05).
+
+
 ### Glaciated vs. non-glaciated locations
 
 The STRUCTURE and subsequent STRUCTURE HARVESTER analyses revealed that for 
 _M. brunneum_ the true value of K was 2 clusters and for _M. brunneum_ K=3, when considering glaciated vs. 
-non-glaciated locations as prior locations (or inside and outside, respectively). 
+non-glaciated locations as prior locations . 
 In the case of _M. robertsii_, the isolates inside areas 
 that were glaciated included an admixed individual (sample #347, Osoyoos, BC, 
-Montane Cordilla South Ecozone, Agricultural). 
-
+Montane Cordilla South Ecozone, Agricultural). (Figure 2)
 
 
 ![](../glaciation_structure.png)
 
-Figure 1. Bayesian analysis of population structure of _Metarhizium bruuneum_(A) and _Metarhizium
-robertsii_ (B) with STRUCTURE. Barplots were generated for ancestry coefficients calculated with CLUMPP.
+Figure 1. Bayesian analysis of population structure of _Metarhizium bruuneum_(A) and _Metarhizium robertsii_ (B) 
+with STRUCTURE. Barplots were generated for ancestry coefficients calculated with STRUCTURE and aligned with CLUMPP.
 
 ### Agricultural vs. natural sites
 
 The true value of K was 3 for _M. robertsii_ and 2 for _M. brunneum_ when using agricultural vs. 
-natural sites as prior locations. 
+natural sites as prior locations. Notably, there was one _M. robertsii_ admixed individual (sample #347, Osoyoos, BC, Montane
+Cordilla South Ecozone, Agricultural)(Figure 2)
 
 ![](../habitat_structure.png)
+
+Figure 2. Bayesian analysis of population structure of _Metarhizium bruuneum_ (A) and 
+_Metarhizium robertsii_ (B) with STRUCTURE. Barplots were generated for ancestry coefficients (Q)
+calculated with STRUCTURE and aligned with CLUMPP.
 
 In conclusion, the observations on population structure were 
 consistent with the results described with the minimum spanning trees 
