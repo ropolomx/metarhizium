@@ -21,11 +21,10 @@ mrob_habitat <- gather(mrob_habitat, key=Cluster, value = Q, 3:5)
 
 mrob_habitat$SampleID <- as.factor(mrob_habitat$SampleID)
 mrob_metadata$SampleID <- as.factor(mrob_metadata$SampleID)
-mrob_habitat$`LRC ID #` <- as.factor(mrob_habitat$`LRC ID #`)
 
 mrob_habitat <- inner_join(mrob_habitat, mrob_metadata, by="SampleID")
 
-# mrob_habitat$SampleID <- 
+mrob_habitat$`LRC ID #` <- as.factor(mrob_habitat$`LRC ID #`)
 
 mrob_habitat_viz <- 
   ggplot(data = mrob_habitat, aes(
@@ -71,10 +70,9 @@ mrob_glaciation <-
 
 mrob_glaciation <- gather(mrob_glaciation, key=Cluster, value = Q, 3:5)
 
-
+mrob_glaciation$SampleID <- as.factor(mrob_glaciation$SampleID)
 mrob_glaciation <- inner_join(mrob_glaciation, mrob_metadata, by="SampleID")
 
-mrob_glaciation$SampleID <- as.factor(mrob_glaciation$SampleID)
 mrob_glaciation$`LRC ID #` <- as.factor(mrob_glaciation$`LRC ID #`)
 
 mrob_glaciation_viz <- 
@@ -220,7 +218,7 @@ habitat_grob <- grid.arrange(mbru_habitat_viz, mrob_habitat_viz, ncol =1)
 
 ggsave(
   filename = 'habitat_structure.png',
-  plot = habitat_arrange,
+  plot = habitat_grob,
   height = 8.5,
   width = 11.5,
   units = "in",
