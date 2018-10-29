@@ -8,44 +8,66 @@ bibliography: Metarhizium.bib
 
 ## Introduction
 
-This analysis was performed to address the reviewers' comments on
+This analysis was performed to address reviewer #2's comments on
 Inglis et al., 2018 ("Biogeography and subspecies diversity of 
 _Metarhizium brunneum_ and _Metarhizium robertsii_ in northwestern 
 North America") submitted to the Canadian Journal of Microbiology.
 
+Reviewer #2 points out that _"allelic diversity statistics are not given and no standard
+measures of population structure or recombination are presented. This would greatly strengthen the paper."_
+
+Reviewer #2's further notes: "How about some allele diversity statistics, test of linkage (dis) equilibrium and
+tests of genetic structure within species? How geographically dispersed are the clones? Given existing gaps in
+understanding _Metarhizium_ population genetic structure, this omission is curious".
 
 ## Methods
 
 ### Preparing data for analysis
 
-The analysis was performed with the data provided by Jenny Gusse. After investigation,
-isolate #2027 was correctly assigned as _M. robertsii_.
+The analyses were performed with the data provided by Jenny Gusse. After investigation,
+isolate #2027 was correctly assigned as _M. robertsii_. Some microsatellite locus entries 
+were dropped from the dataset because either they were completely absent from the _M. robertsii_ 
+dataset (Ma375_3, Ma307_2, and Ma2296_2) or that were present only in one isolate in the _M. brunnei_ 
+dataset (Ma307_2 and Ma2296_2).
 
-Some entries were dropped from the dataset because either they were completely absent from the _M. robertsii_
-dataset (Ma375_3, Ma307_2, and Ma2296_2) or that were present in only one isolate in the _M. brunnei_ dataset (Ma307_2 and Ma2296_2).
+### Linkage Disequilibrium and Hardy-Weinberg Equilibrium
 
 ### Population genetic structure
 
 In order to analyze the population genetic structure, the STRUCTURE v.2.3.4 program 
 [@pritchard_inference_2000] was run with the admixture model, 
 correlated allele frequencies and locations as priors (LOCPRIORS). This was done for 
-both the analysis of agricultural vs. natural habitat and glaciated vs. non-glaciated locations for both
-_M. robertsii_ and _M. brunnei_. 
-STRUCTURE is a Bayesian clustering method that finds the most likely number of clusters (K) 
-that maximize Hardy-Weinberg equilibrium and minimize linkage disequilibrium. 
+the analyses of both _M. robertsii_ and _M. brunnei_, for both the comparisons of agricultural vs. natural habitats and glaciated vs. 
+non-glaciated locations. STRUCTURE is a Bayesian clustering method that finds the most likely number of population 
+clusters (K) based on allelic frequency that maximizes.com Hardy-Weinberg equilibrium and minimize linkage disequilibrium. 
 Five independent runs for each value of K from 1 to 5 were 
 run (10,000 burn-in periods with 20,000 Markov Chain Monte Carlo (MCMC) repetitions after 
-burn-in.). Results were averaged and the true K value was determine using STRUCTURE HARVESTER web version 
+burn-in.). Fixation index (Fst) values were calculated for analyzing genetic differentiation. 
+Results were averaged and the true K value was determined using STRUCTURE HARVESTER web version 
 v0.6.94 [@earl_structure_2012] by using the delta K (Evanno) and the mean log likelihood LnPr(X|K).
+Optimal alignments for the multiple replicate cluster analyses were searched with CLUMPP [@jakobsson_clumpp_2007] to ensure cluster labels match across runs,
+with LargeKGreedy method with the G' pairwise matrix similarity statistic, random input orders and 100 repeats. 
+Cluster data processed with CLUMPP was plotted with the ggplot2 package of R.
 
-Fixation index (Fst) values were calculated for analyzing genetic differentiation.
+
+The Python and R code that was used for data preparation and visualization is available 
+in: https://github.com/ropolomx/metarhizium. 
 
 ## Results and Discussion
 
 ### Glaciated vs. non-glaciated locations
 
-STRUCTURE analysis revealed that the true value of K was 3 clusters for 
-_M.robertsii_ and K = 2 for _M. brunneum_.
+The STRUCTURE analysis revealed that for 
+_M.robertsii_ the true value of K was 3 clusters and for _M. brunneum_ K=2, when considering glaciated vs. non-glaciated locations
+as prior locations. In the case of _M. robertsii_, the genetic clusters included an admixed individual (sample #347, 
+Osoyoos, BC, Montane Cordilla South Ecozone, Agricultural)
+
+### Agricultural vs. natural sites
+
+The true value of K was 3 for _M. robertsii_ and 2 for _M. brunneum_ when considering agricultural vs. 
+natural sites as prior locations.
+
+
 
 In conclusion, the observations on population structure were 
 consistent with the results described with the minimum spanning trees 
@@ -56,4 +78,5 @@ outside glaciation.
 
 ## Acknowledgments
 
-ROP is supported by AAFC startup funding for the Bioinformatics Research Support Unit of the Lethbridge Research and Development Centre.
+ROP is supported by AAFC startup funding for the Bioinformatics Research Support Unit 
+of the Lethbridge Research and Development Centre.
