@@ -3,6 +3,7 @@
 
 library(tidyverse)
 library(gridExtra)
+library(pagas)
 
 # Mrob Habitat ------------------------------------------------------------
 
@@ -12,8 +13,8 @@ mrob_metadata <-
   mrob_metadata %>%
   mutate(Habitat = str_replace(Habitat, "Ag", "Agricultural")) %>%
   mutate(Habitat = str_replace(Habitat, "Nat", "Natural")) %>%
-  mutate(Glaciation = str_replace(Glaciation, "I", "Inside")) %>%
-  mutate(Glaciation = str_replace(Glaciation, "O", "Outside"))
+  mutate(Glaciation = str_replace(Glaciation, "I", "Glaciated")) %>%
+  mutate(Glaciation = str_replace(Glaciation, "O", "Not glaciated"))
 
 mrob_habitat <- read_csv('data_for_structure/harvest_mrob_habitat/structure_plot_mrob_habitat.csv')
 
@@ -34,7 +35,11 @@ mrob_habitat_viz <-
     fill=Cluster)
     ) +
   geom_bar(stat="Identity", width = 1) +
-  scale_fill_viridis_d(option="magma", direction = -1, begin = 0.2, end = 0.9) +
+  # scale_fill_viridis_d(option="cividis", direction = -1,
+  #                      begin = 0.1,
+  #                      end = 0.9
+  #                      ) +
+  scale_fill_grey() +
   facet_grid(. ~ Habitat, space = "free", scales = "free") +
   theme_classic() +
   theme(
@@ -83,7 +88,12 @@ mrob_glaciation_viz <-
     y=Q, fill=Cluster)
     ) +
   geom_bar(stat="Identity", width = 1) +
-  scale_fill_viridis_d(option="magma", direction = -1, begin = 0.2, end = 0.9) +
+  scale_fill_grey() +
+  # scale_fill_viridis_d(option="cividis", 
+                       # direction = -1, 
+                       # begin = 0.1, 
+                       # end = 0.9
+                       # ) +
   facet_grid(. ~ Glaciation, space = "free", scales = "free") +
   theme_classic() +
   theme(
@@ -107,6 +117,15 @@ ggsave(
   width = 10.5,
   units = "in",
   dpi = 600
+)
+
+ggsave(
+  filename = 'mrob_glaciation_viz.tiff',
+  plot = mrob_glaciation_viz,
+  height = 6.5,
+  width = 10.5,
+  units = "in",
+  dpi = 300
 )
 
 # Mbru habitat ------------------------------------------------------------
@@ -137,7 +156,12 @@ mbru_habitat_viz <-
   mbru_habitat %>%
   ggplot(aes(x=SampleID, y=Q, fill=Cluster)) +
   geom_bar(stat="Identity", width=1) +
-  scale_fill_viridis_d(option="inferno", direction = -1, end=0.9) +
+  scale_fill_grey() +
+#  scale_fill_viridis_d(option="cividis", 
+#                       direction = -1, 
+#                       begin = 0.1, 
+#                       end=0.9
+#                       ) +
   facet_grid(. ~ Habitat, space = "free", scales = "free") +
   theme_classic() +
   theme(
@@ -145,7 +169,7 @@ mbru_habitat_viz <-
     strip.text.x = element_text(size = 14),
     axis.title.x = element_text(size = 14),
     axis.title.y = element_text(size = 14),
-    axis.text.x = element_text(size=7,angle=90),
+    axis.text.x = element_text(size=6.5,angle=90),
     axis.text.y = element_text(size=12),
     panel.grid = element_blank()
   ) +
@@ -183,7 +207,12 @@ mbru_glaciation_viz <-
   mbru_glaciation %>%
   ggplot(aes(x=SampleID, y=Q, fill=Cluster)) +
   geom_bar(stat="Identity", width=1) +
-  scale_fill_viridis_d(option="inferno", direction = -1, end=0.9) +
+  # scale_fill_viridis_d(option="cividis", 
+  #                      direction = -1, 
+  #                      begin = 0.1, 
+  #                      end=0.9
+  #                      ) +
+  scale_fill_grey()+
   facet_grid(. ~ Glaciation, space = "free", scales = "free") +
   theme_classic() +
   theme(
@@ -219,10 +248,19 @@ habitat_grob <- grid.arrange(mbru_habitat_viz, mrob_habitat_viz, ncol =1)
 ggsave(
   filename = 'habitat_structure.png',
   plot = habitat_grob,
-  height = 8.5,
+  height = 6.5,
   width = 11.5,
   units = "in",
   dpi = 600
+)
+
+ggsave(
+  filename = 'habitat_structure.tiff',
+  plot = habitat_grob,
+  height = 7,
+  width = 11,
+  units = "in",
+  dpi = 200
 )
 
 glaciation_grob <- grid.arrange(mbru_glaciation_viz, mrob_glaciation_viz, ncol =1)
@@ -230,8 +268,17 @@ glaciation_grob <- grid.arrange(mbru_glaciation_viz, mrob_glaciation_viz, ncol =
 ggsave(
   filename = 'glaciation_structure.png',
   plot = glaciation_grob,
-  height = 8.5,
+  height = 6.5,
   width = 11.5,
   units = "in",
   dpi = 600
+)
+
+ggsave(
+  filename = 'glaciation_structure.tiff',
+  plot = glaciation_grob,
+  height = 7,
+  width = 10.5,
+  units = "in",
+  dpi = 200
 )

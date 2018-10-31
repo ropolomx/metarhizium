@@ -63,9 +63,12 @@ in: https://github.com/ropolomx/metarhizium.
 
 ### Hardy-Weinberg Equilibrium and linkage disequilibrium
 
-There Hardy-Weinberg exact test for _M. robertsii_ showed that all alleles 
-had significant deviation from HWE. Fisher's Exact Test results showed that 36 allele pairs
-were in disequilibrium (p < 0.05).
+There Hardy-Weinberg exact test for _M. robertsii_ showed that all loci 
+had significant deviation from HWE. Fisher's Exact Test for Linkage Disequilibrium results showed that 36 allele pairs
+were in disequilibrium (p < 0.05). 
+
+Similarly to M. robertsii, the test for deviation from H-W equilibrium showed that all loci had significant deviation from HWE (p < 0.001) . Furthermore, 
+testing for linkage disequilibrium showed with Fisher’s exact test that 109 allele pairs were in disequilibrium (p < 0.05).
 
 
 ### Glaciated vs. non-glaciated locations
